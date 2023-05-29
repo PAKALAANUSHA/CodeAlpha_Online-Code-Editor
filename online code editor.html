@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>task 3</title>
+        <style>
+            .html-code,.css-code,.js-code{
+                height:300px;
+                width:700px;
+                /*background-color:plum;*/
+            }
+            body{
+                 background-color: aqua;
+            }
+            textarea{
+                height:250px;
+                width:690px;
+                background-color:plum;
+                border:2px solid plum;
+                border-radius:10px;
+            }
+            .container{
+                display: flex;
+            }
+           .right{
+            /*background-color: white;*/
+            margin-top:20px;
+            width:600px;
+            height:900px;
+            margin-left:50px;
+           }
+           .Output{
+            width:600px;
+            height:855px;
+            background-color: white;
+            border:2px solid aqua;
+            border-radius:10px;
+           }
+           .heading{
+            text-align: center;
+            color:orangered;
+           }
+           .left{
+            margin-top:20px;
+            /*display:flex;*/
+           }
+
+        </style>
+    </head>
+    <body>
+        <h1 class="heading">Online Code Editor</h1>
+        <div class="container">
+            <div class="left">
+                <div class="html-code">
+                    <label>HTML</label>
+                    <textarea onkeyup="run()" class="htmlcode"></textarea>
+                </div>
+                <div class="css-code">
+                    <label>CSS</label>
+                    <textarea onkeyup="run()" class="csscode"></textarea>
+                </div>
+                <div class="js-code">
+                    <label>Javascript</label>
+                    <textarea onkeyup="run()" class="jscode"></textarea>
+                </div>
+            </div>
+        <div class="right">
+            <label>Output</label><br>
+           <iframe class="Output"></iframe>
+
+        </div>
+        <script>
+            function run(){
+            var htmlcode=document.querySelector(".htmlcode").value
+            var csscode=document.querySelector(".csscode").value
+            var jscode=document.querySelector(".jscode").value
+            var Output=document.querySelector(".Output")
+                Output.contentDocument.body.innerHTML=htmlcode+"<style>"+csscode+"</style>"
+                Output.contentWindow.eval(jscode);
+            }
+        </script>
+    </body>
+</html>
